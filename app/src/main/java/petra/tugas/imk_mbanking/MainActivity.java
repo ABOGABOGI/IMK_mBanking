@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etPass;
     Button butLogin;
     TextView tvLink;
+    int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         etPass = (EditText)findViewById(R.id.input_password);
         butLogin = (Button)findViewById(R.id.btn_login);
         tvLink = (TextView)findViewById(R.id.link_web);
-
+        counter=0;
         butLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
     public void login() {
         Log.d("Login", "Login");
 
-        if (!validate()) {
-            onLoginFailed();
+        if (!validate()||counter>3) {
+            onLoginFailed(0);
             return;
         }
 
@@ -59,17 +60,40 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String sId = etId.getText().toString();
-        String sPass = etPass.getText().toString();
+        final String sId = etId.getText().toString();
+        final String sPass = etPass.getText().toString();
+
 
         // TODO: Implement your own authentication logic here.
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
+                        boolean valid = true;
+                        int num=1;
+                        if(sId.equals("admin") && sPass.equals("123456")){
+                            etPass.setError(null);
+                            etId.setError(null);
+                        }else{
+                            valid = false;
+                            if(sId.equals("admin")){
+                                counter++;
+                                etPass.setError("wrong access code");
+                            }else{
+                                etId.setError("enter a valid user ID");
+                                num=0;
+                            }
+                        }
+                        if(counter>3){
+                            valid=false;
+                        }
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
+                        if(valid){
+                            onLoginSuccess();
+                        }
+                        else {
+                            onLoginFailed(num);
+                        }
                         progressDialog.dismiss();
                     }
                 }, 3000);
@@ -82,10 +106,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         butLogin.setEnabled(true);
+        counter=0;
         Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG).show();
     }
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+    public void onLoginFailed(int n) {
+        if(counter>=3){
+            Toast.makeText(getBaseContext(),"Login failed\nBLOCKED",Toast.LENGTH_LONG).show();
+        }else {
+            if (n == 1) {
+                Toast.makeText(getBaseContext(), "Login failed\nChance Remaining: " + (3 - counter), Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+            }
+        }
+
 
         butLogin.setEnabled(true);
     }
@@ -95,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         String sId = etId.getText().toString();
         String sPass = etPass.getText().toString();
 
-        if (sId.isEmpty()||sId.length()!=6 ) {
+        if (sId.isEmpty() ) {
             etId.setError("enter a valid user ID");
             valid = false;
         } else {
