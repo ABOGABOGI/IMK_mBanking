@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public void login() {
         Log.d("Login", "Login");
 
-        if (!validate()||counter>3) {
+        if (!validate()) {
             onLoginFailed(0);
             return;
         }
@@ -110,16 +110,16 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG).show();
     }
     public void onLoginFailed(int n) {
-        if(counter>=3){
-            Toast.makeText(getBaseContext(),"Login failed\nBLOCKED",Toast.LENGTH_LONG).show();
-        }else {
             if (n == 1) {
-                Toast.makeText(getBaseContext(), "Login failed\nChance Remaining: " + (3 - counter), Toast.LENGTH_LONG).show();
+                if(counter>=3) {
+                    Toast.makeText(getBaseContext(), "Login failed\nBLOCKED", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getBaseContext(), "Login failed\nChance Remaining: " + (3 - counter), Toast.LENGTH_LONG).show();
+                }
             }
             else{
                 Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
             }
-        }
 
 
         butLogin.setEnabled(true);
