@@ -74,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }, 3000);
     }
+    @Override
+    public void onBackPressed() {
+        // disable going back to the MainActivity
+        moveTaskToBack(true);
+    }
+
     public void onLoginSuccess() {
         butLogin.setEnabled(true);
         Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG).show();
@@ -89,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         String sId = etId.getText().toString();
         String sPass = etPass.getText().toString();
 
-        if (sId.isEmpty() ) {
+        if (sId.isEmpty()||sId.length()!=6 ) {
             etId.setError("enter a valid user ID");
             valid = false;
         } else {
