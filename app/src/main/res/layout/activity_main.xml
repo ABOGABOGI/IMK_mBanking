@@ -5,7 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".MainActivity"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bg_gradient">
 
     <LinearLayout
         android:orientation="vertical"
@@ -33,7 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="User ID"
-                android:inputType="text" />
+                android:inputType="text"
+                android:padding="6dp"
+                android:background="@drawable/login_rounded"
+                android:drawableLeft="@drawable/username_icon"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -49,7 +53,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Access Code"
                 android:maxLength="6"
-                android:inputType="numberPassword" />
+                android:inputType="numberPassword"
+                android:padding="6dp"
+                android:background="@drawable/login_rounded"
+                android:drawableLeft="@drawable/password_icon"
+                />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
@@ -59,7 +67,9 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Login"/>
+            android:background="@drawable/login"
+            android:text="Login"
+            android:textColor="#ffffff"/>
 
         <TextView android:id="@+id/link_web"
             android:layout_width="fill_parent"
@@ -67,7 +77,8 @@
             android:layout_marginBottom="24dp"
             android:text="Contact Us"
             android:gravity="center"
-            android:textSize="16dip"/>
+            android:textSize="16dip"
+            android:textColor="#ffffff"/>
 
     </LinearLayout>
 
