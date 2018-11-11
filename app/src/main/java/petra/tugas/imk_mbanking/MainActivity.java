@@ -1,6 +1,8 @@
 package petra.tugas.imk_mbanking;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         etId = (EditText)findViewById(R.id.input_id);
         etPass = (EditText)findViewById(R.id.input_password);
         butLogin = (Button)findViewById(R.id.btn_login);
@@ -108,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
         butLogin.setEnabled(true);
         counter=0;
         Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG).show();
+        Intent i = new Intent(this,mainMenu.class);
+        i.putExtra("fullName","Nama Lengkap Admin");
+        startActivity(i);
     }
     public void onLoginFailed(int n) {
             if (n == 1) {
@@ -146,4 +152,5 @@ public class MainActivity extends AppCompatActivity {
 
         return valid;
     }
+
 }
