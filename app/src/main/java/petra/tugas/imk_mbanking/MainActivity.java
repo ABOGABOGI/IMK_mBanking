@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -110,7 +111,9 @@ public class MainActivity extends AppCompatActivity {
     public void onLoginSuccess() {
         butLogin.setEnabled(true);
         counter=0;
-        Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG).show();
+        Toast toast = Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
+        toast.show();
         Intent i = new Intent(this,mainMenu.class);
         i.putExtra("fullName","Nama Lengkap Admin");
         startActivity(i);
@@ -118,13 +121,19 @@ public class MainActivity extends AppCompatActivity {
     public void onLoginFailed(int n) {
             if (n == 1) {
                 if(counter>=3) {
-                    Toast.makeText(getBaseContext(), "Login failed\nBLOCKED", Toast.LENGTH_LONG).show();
+                    Toast toast =Toast.makeText(getBaseContext(), "Login failed\nBLOCKED", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
+                    toast.show();
                 }else{
-                    Toast.makeText(getBaseContext(), "Login failed\nChance Remaining: " + (3 - counter), Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(getBaseContext(), "Login failed\nChance Remaining: " + (3 - counter), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
+                    toast.show();
                 }
             }
             else{
-                Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
+                toast.show();
             }
 
 
