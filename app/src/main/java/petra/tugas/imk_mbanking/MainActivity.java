@@ -4,7 +4,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.inputmethodservice.Keyboard;
+import android.inputmethodservice.KeyboardView;
 import android.net.Uri;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button butLogin;
     TextView tvLink;
     int counter;
+    String[] data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +36,14 @@ public class MainActivity extends AppCompatActivity {
         butLogin = (Button)findViewById(R.id.btn_login);
         tvLink = (TextView)findViewById(R.id.link_web);
         counter=0;
+        data=new String[]{"Nama Lengkap Admin","10000"};
         butLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 login();
             }
         });
+
 
         tvLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         butLogin.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this,
-                R.style.Theme_AppCompat_DayNight_Dialog);
+                R.style.Theme_AppCompat_Light_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
@@ -115,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
         toast.show();
         Intent i = new Intent(this,mainMenu.class);
-        i.putExtra("fullName","Nama Lengkap Admin");
+        i.putExtra("data",data);
         startActivity(i);
     }
     public void onLoginFailed(int n) {

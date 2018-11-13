@@ -16,6 +16,7 @@ import android.widget.Toolbar;
 public class mainMenu extends AppCompatActivity {
     TextView tvNama;
     Intent logout;
+    String[] data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +24,11 @@ public class mainMenu extends AppCompatActivity {
         getSupportActionBar().setTitle("MNHMobile");
         tvNama = (TextView)findViewById(R.id.tvNama);
         Intent i = getIntent();
-        String fName = i.getStringExtra("fullName");
-        tvNama.setText(fName);
+        data=i.getStringArrayExtra("data");
+        int a = Integer.parseInt(data[1]);
+        tvNama.setText(""+a);
         logout = new Intent(this,MainActivity.class);
+
     }
 
     @Override
@@ -53,9 +56,18 @@ public class mainMenu extends AppCompatActivity {
     public void mainMenuClick(View view) {
         switch (view.getId()){
             case R.id.mInfo:
-                Intent i = new Intent(this,mInfo.class);
-                startActivity(i);
+                Intent iinfo = new Intent(this,mInfo.class);
+                iinfo.putExtra("data",data);
+                startActivity(iinfo);
+                break;
+
+            case R.id.mPayment:
+                Intent ipayment = new Intent(this,mPayment.class);
+                ipayment.putExtra("data",data);
+                startActivity(ipayment);
+                break;
         }
+
     }
 
     @Override
@@ -67,7 +79,7 @@ public class mainMenu extends AppCompatActivity {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             final ProgressDialog progressDialog = new ProgressDialog(mainMenu.this,
-                    R.style.Theme_AppCompat_DayNight_Dialog);
+                    R.style.Theme_AppCompat_Light_Dialog);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Please Wait....");
             progressDialog.show();

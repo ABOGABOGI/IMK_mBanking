@@ -27,7 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="10dp"
+            app:hintTextAppearance="@style/HintText">
 
             <EditText
                 android:id="@+id/input_id"
@@ -45,7 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            app:hintTextAppearance="@style/HintText">
 
             <EditText
                 android:id="@+id/input_password"
@@ -77,7 +79,7 @@
             android:layout_marginBottom="24dp"
             android:text="Contact Us"
             android:gravity="center"
-            android:textSize="16dip"
+            android:textSize="16dp"
             android:textColor="#ffffff"/>
 
     </LinearLayout>
