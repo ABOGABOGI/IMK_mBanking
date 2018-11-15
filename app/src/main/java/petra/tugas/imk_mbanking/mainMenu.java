@@ -21,7 +21,8 @@ public class mainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        getSupportActionBar().setTitle("MNHMobile");
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setElevation(0);
         tvNama = (TextView)findViewById(R.id.tvNama);
         Intent i = getIntent();
         data=i.getStringArrayExtra("data");
