@@ -83,15 +83,17 @@ public class mainMenu extends AppCompatActivity {
             final ProgressDialog progressDialog = new ProgressDialog(mainMenu.this,
                     R.style.Theme_AppCompat_Light_Dialog);
             progressDialog.setIndeterminate(true);
+            progressDialog.setCancelable(false);
             progressDialog.setMessage("Please Wait....");
             progressDialog.show();
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
                             progressDialog.dismiss();
+                            startActivity(logout);
                         }
-                    }, 3000);
-            startActivity(logout);
+                    }, 2000);
+
         }
     }
 }

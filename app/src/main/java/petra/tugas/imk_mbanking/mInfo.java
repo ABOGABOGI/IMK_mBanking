@@ -1,5 +1,7 @@
 package petra.tugas.imk_mbanking;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +12,7 @@ import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -45,41 +48,58 @@ public class mInfo extends AppCompatActivity {
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            String mpin = etPin.getText().toString();
-                            if (mpin.equals("123456")) {
-                                SharedPreferences.Editor editor = appData.edit();
-                                editor.putInt("pinCounter",0);
-                                editor.commit();
+                            final ProgressDialog progressDialog = new ProgressDialog(mInfo.this,
+                                    R.style.Theme_AppCompat_Light_Dialog);
+                            progressDialog.setIndeterminate(true);
+                            progressDialog.setCancelable(false);
+                            progressDialog.setMessage("Please Wait...");
+                            progressDialog.show();
 
-                                LayoutInflater liSaldo = LayoutInflater.from(mInfo.this);
-                                View saldoView = liSaldo.inflate(R.layout.saldo, null);
-                                AlertDialog.Builder saldoBuilder = new AlertDialog.Builder(mInfo.this);
-                                saldoBuilder.setView(saldoView);
-                                saldoBuilder.setCancelable(false);
+                            // TODO: Implement your own authentication logic here.
 
-                                final TextView tvSaldo =(TextView)saldoView.findViewById(R.id.tvSaldo);
-                                tvSaldo.setText("Rp. "+appData.getInt("saldo",-1));
+                            new android.os.Handler().postDelayed(
+                                    new Runnable() {
+                                        public void run() {
+                                            progressDialog.dismiss();
+                                            String mpin = etPin.getText().toString();
+                                            if (mpin.equals("123456")) {
+                                                SharedPreferences.Editor editor = appData.edit();
+                                                editor.putInt("pinCounter",0);
+                                                editor.commit();
 
-                                saldoBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.cancel();
-                                    }
-                                });
-                                saldoBuilder.show();
+                                                LayoutInflater liSaldo = LayoutInflater.from(mInfo.this);
+                                                View saldoView = liSaldo.inflate(R.layout.saldo, null);
+                                                AlertDialog.Builder saldoBuilder = new AlertDialog.Builder(mInfo.this);
+                                                saldoBuilder.setView(saldoView);
+                                                saldoBuilder.setCancelable(false);
 
-                            } else {
-                                pinCounter+=1;
-                                SharedPreferences.Editor editor = appData.edit();
-                                editor.putInt("pinCounter",pinCounter);
-                                editor.commit();
-                                AlertDialog.Builder myBuilder = new AlertDialog.Builder(mInfo.this);
-                                myBuilder.setMessage("m-PIN yang Anda masukan Salah!");
-                                myBuilder.setCancelable(false);
-                                myBuilder.setNegativeButton("OK", null);
-                                myBuilder.show();
+                                                final TextView tvSaldo =(TextView)saldoView.findViewById(R.id.tvSaldo);
+                                                tvSaldo.setText("Rp. "+appData.getInt("saldo",-1));
 
-                            }
+                                                saldoBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+                                                saldoBuilder.show();
+
+                                            } else {
+                                                pinCounter+=1;
+                                                SharedPreferences.Editor editor = appData.edit();
+                                                editor.putInt("pinCounter",pinCounter);
+                                                editor.commit();
+                                                AlertDialog.Builder myBuilder = new AlertDialog.Builder(mInfo.this);
+                                                myBuilder.setMessage("m-PIN yang Anda masukan Salah!");
+                                                myBuilder.setCancelable(false);
+                                                myBuilder.setNegativeButton("OK", null);
+                                                myBuilder.show();
+
+                                            }
+                                        }
+                                    }, 3000);
+
+
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
