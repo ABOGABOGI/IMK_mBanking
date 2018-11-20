@@ -21,7 +21,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".mainMenu" />
         <activity android:name=".mInfo" />
-        <activity android:name=".mPayment"></activity>
+        <activity android:name=".mPayment" />
+        <activity android:name=".mTransfer" />
+        <activity android:name=".beliPulsa"></activity>
     </application>
 
 </manifest>

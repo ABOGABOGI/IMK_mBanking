@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mPayment"
+    tools:context=".mTransfer"
     android:background="@drawable/bg_gradient">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Payment"
+            android:text="TRANSFER"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="36sp"
@@ -25,45 +25,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/bTelepon"
-            style="?android:attr/borderlessButtonStyle"
+        <TextView
+            android:id="@+id/tvDaftarRek"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="64dp"
-            android:drawableEnd="@drawable/image"
+            android:layout_marginTop="40dp"
             android:fitsSystemWindows="true"
-            android:text="Telepon"
+            android:text="Daftar Rekening"
             android:textAlignment="viewStart"
-            android:textSize="18sp"
-            android:background="#FFFFFF"
+            android:textSize="15sp"
+            android:background="#C0C0C0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-        <Button
-            android:id="@+id/bHandPhone"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="0dp"
-            android:drawableEnd="@drawable/image"
-            android:fitsSystemWindows="true"
-            android:text="HandPhone"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bTelepon" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <Button
-            android:id="@+id/bInternet"
+            android:id="@+id/dtAntRek"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -72,17 +52,17 @@
             android:layout_marginTop="0dp"
             android:drawableEnd="@drawable/image"
             android:fitsSystemWindows="true"
-            android:text="Internet"
+            android:text="Antar Rekening"
             android:textAlignment="viewStart"
             android:textSize="18sp"
             android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bHandPhone" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDaftarRek" />
 
         <Button
-            android:id="@+id/bVacc"
+            android:id="@+id/dtAntBank"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -91,35 +71,51 @@
             android:layout_marginTop="0dp"
             android:drawableEnd="@drawable/image"
             android:fitsSystemWindows="true"
-            android:text="Virtual Account"
+            android:text="Antar Bank"
             android:textAlignment="viewStart"
             android:textSize="18sp"
             android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bInternet" />
-        <Button
-            android:id="@+id/bCc"
-            style="?android:attr/borderlessButtonStyle"
+            app:layout_constraintTop_toBottomOf="@+id/dtAntRek" />
+        <TextView
+            android:id="@+id/tvTransfer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="0dp"
-            android:drawableEnd="@drawable/image"
+            android:layout_marginTop="15dp"
             android:fitsSystemWindows="true"
-            android:text="Kartu Kredit"
+            android:text="Transfer"
             android:textAlignment="viewStart"
-            android:textSize="18sp"
-            android:background="#FFFFFF"
+            android:textSize="15sp"
+            android:background="#C0C0C0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bVacc" />
+            app:layout_constraintTop_toBottomOf="@+id/dtAntBank" />
 
         <Button
-            android:id="@+id/bAir"
+            android:id="@+id/tAntRek"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="35dp"
+            android:drawableEnd="@drawable/image"
+            android:fitsSystemWindows="true"
+            android:text="Antar Rekening"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dtAntBank" />
+        <Button
+            android:id="@+id/tAntBank"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -128,17 +124,17 @@
             android:layout_marginTop="0dp"
             android:drawableEnd="@drawable/image"
             android:fitsSystemWindows="true"
-            android:text="Tagihan Air"
+            android:text="Antar Bank"
             android:textAlignment="viewStart"
             android:textSize="18sp"
             android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bCc" />
+            app:layout_constraintTop_toBottomOf="@+id/tAntRek" />
 
         <Button
-            android:id="@+id/bAsuransi"
+            android:id="@+id/InboxTrans"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -147,15 +143,14 @@
             android:layout_marginTop="0dp"
             android:drawableEnd="@drawable/image"
             android:fitsSystemWindows="true"
-            android:text="Asuransi"
+            android:text="Inbox"
             android:textAlignment="viewStart"
             android:textSize="18sp"
             android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bAir" />
-
+            app:layout_constraintTop_toBottomOf="@+id/tAntBank" />
     </android.support.constraint.ConstraintLayout>
 
 

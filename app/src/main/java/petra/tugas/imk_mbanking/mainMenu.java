@@ -68,6 +68,11 @@ public class mainMenu extends AppCompatActivity {
                 Intent ipayment = new Intent(this,mPayment.class);
                 startActivity(ipayment);
                 break;
+
+            case R.id.mTransfer:
+                Intent itransfer = new Intent(this,mTransfer.class);
+                startActivity(itransfer);
+                break;
         }
 
     }

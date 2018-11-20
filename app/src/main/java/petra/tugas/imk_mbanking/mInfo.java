@@ -19,6 +19,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class mInfo extends AppCompatActivity {
     Button bSaldo,bMutasi;
     SharedPreferences appData;
@@ -66,6 +70,9 @@ public class mInfo extends AppCompatActivity {
                                                 SharedPreferences.Editor editor = appData.edit();
                                                 editor.putInt("pinCounter",0);
                                                 editor.commit();
+                                                Date date = Calendar.getInstance().getTime();
+                                                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                                                String formattedDate = df.format(date);
 
                                                 LayoutInflater liSaldo = LayoutInflater.from(mInfo.this);
                                                 View saldoView = liSaldo.inflate(R.layout.saldo, null);
@@ -74,8 +81,9 @@ public class mInfo extends AppCompatActivity {
                                                 saldoBuilder.setCancelable(false);
 
                                                 final TextView tvSaldo =(TextView)saldoView.findViewById(R.id.tvSaldo);
+                                                final TextView tvDate = (TextView)saldoView.findViewById(R.id.tvDateCek);
                                                 tvSaldo.setText("Rp. "+appData.getInt("saldo",-1));
-
+                                                tvDate.setText(formattedDate);
                                                 saldoBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                     @Override
                                                     public void onClick(DialogInterface dialog, int which) {
