@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.net.Uri;
@@ -23,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
     EditText etPass;
     Button butLogin;
     TextView tvLink;
-    int counter;
-    String[] data;
+    int counter,pinCounter,saldo;
+    SharedPreferences appData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,16 @@ public class MainActivity extends AppCompatActivity {
         etPass = (EditText)findViewById(R.id.input_password);
         butLogin = (Button)findViewById(R.id.btn_login);
         tvLink = (TextView)findViewById(R.id.link_web);
+        appData = getSharedPreferences("appData",MODE_PRIVATE);
         counter=0;
-        data=new String[]{"Nama Lengkap Admin","10000"};
+        pinCounter = appData.getInt("pinCounter",-1);
+        saldo = appData.getInt("pinCounter",-1);
+        if (saldo==-1){
+            SharedPreferences.Editor editor = appData.edit();
+            editor.putInt("saldo",1000000);
+            editor.commit();
+        }
+
         butLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
                         if(sId.equals("admin") && sPass.equals("123456")){
                             etPass.setError(null);
                             etId.setError(null);
+                            SharedPreferences.Editor editor = appData.edit();
+                            editor.putString("nama","Nama Lengkap Admin");
+                            editor.commit();
+
                         }else{
                             valid = false;
                             if(sId.equals("admin")){
@@ -93,9 +106,12 @@ public class MainActivity extends AppCompatActivity {
                                 etId.setError("enter a valid user ID");
                                 num=0;
                             }
+
                         }
                         if(counter>3){
                             valid=false;
+                            etPass.setError(null);
+                            etId.setError(null);
                         }
                         // On complete call either onLoginSuccess or onLoginFailed
                         if(valid){
@@ -117,11 +133,18 @@ public class MainActivity extends AppCompatActivity {
     public void onLoginSuccess() {
         butLogin.setEnabled(true);
         counter=0;
+        SharedPreferences.Editor editor = appData.edit();
+        if (pinCounter==-1) {
+            editor.putInt("pinCounter", 0);
+            editor.commit();
+        }else{
+            editor.putInt("pinCounter", pinCounter);
+            editor.commit();
+        }
         Toast toast = Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG);
         toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
         toast.show();
         Intent i = new Intent(this,mainMenu.class);
-        i.putExtra("data",data);
         startActivity(i);
     }
     public void onLoginFailed(int n) {

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +17,8 @@ import android.widget.Toolbar;
 public class mainMenu extends AppCompatActivity {
     TextView tvNama;
     Intent logout;
-    String[] data;
+    SharedPreferences appData;
+    int pinCounter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +26,12 @@ public class mainMenu extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         getSupportActionBar().setElevation(0);
         tvNama = (TextView)findViewById(R.id.tvNama);
-        Intent i = getIntent();
-        data=i.getStringArrayExtra("data");
-        int a = Integer.parseInt(data[1]);
-        tvNama.setText(""+a);
+        appData = getSharedPreferences("appData",MODE_PRIVATE);
+        String nama = appData.getString("nama",null);
+        pinCounter = appData.getInt("pinCounter",0);
+        tvNama.setText(nama);
         logout = new Intent(this,MainActivity.class);
+
 
     }
 
@@ -58,13 +61,11 @@ public class mainMenu extends AppCompatActivity {
         switch (view.getId()){
             case R.id.mInfo:
                 Intent iinfo = new Intent(this,mInfo.class);
-                iinfo.putExtra("data",data);
                 startActivity(iinfo);
                 break;
 
             case R.id.mPayment:
                 Intent ipayment = new Intent(this,mPayment.class);
-                ipayment.putExtra("data",data);
                 startActivity(ipayment);
                 break;
         }
