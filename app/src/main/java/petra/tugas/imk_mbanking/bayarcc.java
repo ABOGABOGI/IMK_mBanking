@@ -19,158 +19,116 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-public class beliPulsa extends AppCompatActivity {
-    Button bJenis,bNominal,bNomor,bOk;
-    String transaksi;
+public class bayarcc extends AppCompatActivity {
+    Button bOk, bBank;
+    EditText etJumlah,etKartu,etDesc;
     int pinCounter;
     SharedPreferences appData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beli_pulsa);
-        bJenis = findViewById(R.id.bJenis);
-        bNominal = findViewById(R.id.bNominal);
-        bNomor = findViewById(R.id.bNomor);
-        bOk =findViewById(R.id.bOk);
-        transaksi = "isi pulang pulsa: ";
+        setContentView(R.layout.activity_bayarcc);
+        bOk = findViewById(R.id.bOk);
+        bBank = findViewById(R.id.bBank);
+        etJumlah = findViewById(R.id.etJumlah);
+        etKartu = findViewById(R.id.etKartu);
+        etDesc = findViewById(R.id.etDesc);
+
         appData = getSharedPreferences("appData",MODE_PRIVATE);
         pinCounter = appData.getInt("pinCounter",0);
-        bJenis.setOnClickListener(new View.OnClickListener() {
+
+        bBank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(beliPulsa.this);
-                View jenisView = li.inflate(R.layout.jenispulsa, null);
-                final AlertDialog.Builder builder = new AlertDialog.Builder(beliPulsa.this);
-                final Button button1 = (Button) jenisView.findViewById(R.id.bTsel);
-                final Button button2 = (Button) jenisView.findViewById(R.id.bSmarfren);
-                final Button button3 = (Button) jenisView.findViewById(R.id.bIndosat);
-                final Button button4 = (Button) jenisView.findViewById(R.id.bXl);
-                builder.setView(jenisView);
+                LayoutInflater li = LayoutInflater.from(bayarcc.this);
+                View bankView = li.inflate(R.layout.jenispulsa, null);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(bayarcc.this);
+                final Button button1 = (Button) bankView.findViewById(R.id.bTsel);
+                final Button button2 = (Button) bankView.findViewById(R.id.bSmarfren);
+                final Button button3 = (Button) bankView.findViewById(R.id.bIndosat);
+                final Button button4 = (Button) bankView.findViewById(R.id.bXl);
+                builder.setView(bankView);
+                button1.setText("Bank Sendiri");
+                button2.setText("Bank C");
+                button3.setText("Bank B");
+                button4.setText("Bank D");
                 final AlertDialog dialog = builder.create();
                 button1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        bJenis.setText("TSEL");
+                        bBank.setText(button1.getText().toString());
                         dialog.cancel();
+                        //kalo bank sendiri otomatis
+                        final ProgressDialog progressDialog = new ProgressDialog(bayarcc.this,
+                                R.style.Theme_AppCompat_Light_Dialog);
+                        progressDialog.setIndeterminate(true);
+                        progressDialog.setCancelable(false);
+                        progressDialog.setMessage("Please Wait....");
+                        progressDialog.show();
+                        new android.os.Handler().postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                        etJumlah.setText("100000");
+                                        etJumlah.setEnabled(false);
+
+                                    }
+                                }, 2000);
                     }
                 });
                 button2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        bJenis.setText("SMARTFREN");
+                        bBank.setText(button2.getText().toString());
+                        etJumlah.setEnabled(true);
                         dialog.cancel();
                     }
                 });
                 button3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        bJenis.setText("INDOSAT");
+                        bBank.setText(button3.getText().toString());
+                        etJumlah.setEnabled(true);
                         dialog.cancel();
                     }
                 });
                 button4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        bJenis.setText("XL/AXIS");
+                        bBank.setText(button4.getText().toString());
+                        etJumlah.setEnabled(true);
                         dialog.cancel();
                     }
                 });
 
-                dialog.show();
-
-
-            }
-        });
-        bNominal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(beliPulsa.this);
-                View jenisView = li.inflate(R.layout.layoutnominal, null);
-                final AlertDialog.Builder builder = new AlertDialog.Builder(beliPulsa.this);
-                final Button button1 = (Button) jenisView.findViewById(R.id.b25);
-                final Button button2 = (Button) jenisView.findViewById(R.id.b50);
-                final Button button3 = (Button) jenisView.findViewById(R.id.b100);
-                final Button button4 = (Button) jenisView.findViewById(R.id.b200);
-                builder.setView(jenisView);
-                final AlertDialog dialog = builder.create();
-                button1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bNominal.setText("25000");
-                        dialog.cancel();
-                    }
-                });
-                button2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bNominal.setText("50000");
-                        dialog.cancel();
-                    }
-                });
-                button3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bNominal.setText("100000");
-                        dialog.cancel();
-                    }
-                });
-                button4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bNominal.setText("200000");
-                        dialog.cancel();
-                    }
-                });
-
-                dialog.show();
-            }
-        });
-        bNomor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(beliPulsa.this);
-                View inputView = li.inflate(R.layout.inputnohp, null);
-                final AlertDialog.Builder builder = new AlertDialog.Builder(beliPulsa.this);
-                final EditText userInput = inputView.findViewById(R.id.etInput);
-                builder.setTitle("No. Handphone");
-                builder.setView(inputView);
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        bNomor.setText(userInput.getText().toString());
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                final AlertDialog dialog = builder.create();
                 dialog.show();
             }
         });
         bOk.setOnClickListener(new View.OnClickListener() {
-            String _jenis;
-            int _nominal;
-            String _nomor;
+            int jumlah,totalbyr;
+            String kartu,bank,desc;
             @Override
             public void onClick(View v) {
-                try {
+                //cek inputan g kosong kecuali desc boleh kosong
+                //try krn kalo INT parseInt kosong error
+                try{
+                    jumlah = Integer.parseInt(etJumlah.getText().toString());
+                    kartu = etKartu.getText().toString();
+                    bank = bBank.getText().toString();
+                    desc = etDesc.getText().toString();
 
-                    _jenis = bJenis.getText().toString();
-                    _nominal = Integer.parseInt(bNominal.getText().toString());
-                    _nomor = bNomor.getText().toString();
-                    if(_jenis.isEmpty()||_nomor.isEmpty()){
-                        AlertDialog.Builder errorBuilder = new AlertDialog.Builder(beliPulsa.this);
+                    if (kartu.isEmpty()||bank.isEmpty()){
+                        AlertDialog.Builder errorBuilder = new AlertDialog.Builder(bayarcc.this);
                         errorBuilder.setMessage("Tolong isi semua input");
                         errorBuilder.setCancelable(false);
                         errorBuilder.setNegativeButton("OK", null);
                         errorBuilder.show();
-                    }else{
-                        LayoutInflater li = LayoutInflater.from(beliPulsa.this);
+                    }
+                    else{
+                        //inflate layout konfirmasi
+                        LayoutInflater li = LayoutInflater.from(bayarcc.this);
                         final View konfirmasiView = li.inflate(R.layout.layoutkonfirmasi, null);
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(beliPulsa.this);
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(bayarcc.this);
                         final TextView tvJudul1 = konfirmasiView.findViewById(R.id.tvJudul);
                         final TextView tv11 = konfirmasiView.findViewById(R.id.tv1);
                         final TextView tv21 = konfirmasiView.findViewById(R.id.tv2);
@@ -179,28 +137,32 @@ public class beliPulsa extends AppCompatActivity {
                         final TextView tv51 = konfirmasiView.findViewById(R.id.tv5);
                         final TextView tv61 = konfirmasiView.findViewById(R.id.tv6);
                         tvJudul1.setText("KONFIRMASI");
-                        tv11.setText(transaksi);
-                        tv21.setText(_jenis);
-                        tv31.setText(_nomor);
-                        tv41.setText("Rp. "+_nominal);
-                        tv51.setText("Biaya Admin: Rp. 1500");
-                        tv61.setText("Total Bayar: Rp. "+(_nominal+=1500));
+                        tv11.setText("Pembayaran Kartu Kredit");
+                        tv21.setText(bank);
+                        tv31.setText("Rp. "+jumlah);
+                        totalbyr =jumlah;
+                        if (!bank.equals("Bank Sendiri")){
+                            tv41.setText("Biaya Admin: Rp. 1500");
+                            tv51.setText("Total Bayar: Rp. "+(jumlah+=1500));
+                            tv61.setText("Deskripsi: "+desc);
+                            totalbyr+=1500;
+                        }
                         builder.setView(konfirmasiView);
                         builder.setCancelable(false);
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if (pinCounter < 3) {
-                                    LayoutInflater li = LayoutInflater.from(beliPulsa.this);
+                                    LayoutInflater li = LayoutInflater.from(bayarcc.this);
                                     View pinView = li.inflate(R.layout.pin, null);
-                                    final AlertDialog.Builder builder = new AlertDialog.Builder(beliPulsa.this);
+                                    final AlertDialog.Builder builder = new AlertDialog.Builder(bayarcc.this);
                                     final EditText etPin = (EditText) pinView.findViewById(R.id.etPin);
                                     builder.setView(pinView);
                                     builder.setCancelable(false);
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            final ProgressDialog progressDialog = new ProgressDialog(beliPulsa.this,
+                                            final ProgressDialog progressDialog = new ProgressDialog(bayarcc.this,
                                                     R.style.Theme_AppCompat_Light_Dialog);
                                             progressDialog.setIndeterminate(true);
                                             progressDialog.setCancelable(false);
@@ -215,31 +177,28 @@ public class beliPulsa extends AppCompatActivity {
                                                             progressDialog.dismiss();
                                                             String mpin = etPin.getText().toString();
                                                             if (mpin.equals("123456")) {
-                                                                if ((appData.getInt("saldo",0)-( Integer.parseInt(bNominal.getText().toString())+1500))<0){
-                                                                    AlertDialog.Builder errorBuilder = new AlertDialog.Builder(beliPulsa.this);
+                                                                if ((appData.getInt("saldo",0)-totalbyr<0)){
+                                                                    AlertDialog.Builder errorBuilder = new AlertDialog.Builder(bayarcc.this);
                                                                     errorBuilder.setMessage("Saldo Anda Tidak Mencukupi");
                                                                     errorBuilder.setCancelable(false);
                                                                     errorBuilder.setNegativeButton("OK", null);
                                                                     errorBuilder.show();
                                                                 }else{
-                                                                    String _jenis = bJenis.getText().toString();
-                                                                    int _nominal = Integer.parseInt(bNominal.getText().toString());
-                                                                    String _nomor = bNomor.getText().toString();
                                                                     Date date = Calendar.getInstance().getTime();
                                                                     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                                                                     String formattedDate = df.format(date);
                                                                     int random =new Random().nextInt((99999999 - 10000000) + 1) + 10000000;
                                                                     int newSaldo = appData.getInt("saldo",0);
-                                                                    newSaldo = newSaldo-(_nominal+1500);
+                                                                    newSaldo = newSaldo-totalbyr;
 
                                                                     SharedPreferences.Editor editor = appData.edit();
                                                                     editor.putInt("pinCounter",0);
                                                                     editor.putInt("saldo",newSaldo);
                                                                     editor.commit();
 
-                                                                    LayoutInflater liResi = LayoutInflater.from(beliPulsa.this);
+                                                                    LayoutInflater liResi = LayoutInflater.from(bayarcc.this);
                                                                     View resiView = liResi.inflate(R.layout.layoutkonfirmasi, null);
-                                                                    AlertDialog.Builder resiBuilder = new AlertDialog.Builder(beliPulsa.this);
+                                                                    AlertDialog.Builder resiBuilder = new AlertDialog.Builder(bayarcc.this);
                                                                     final TextView tvJudul = resiView.findViewById(R.id.tvJudul);
                                                                     final TextView tv1 = resiView.findViewById(R.id.tv1);
                                                                     final TextView tv2 = resiView.findViewById(R.id.tv2);
@@ -255,10 +214,10 @@ public class beliPulsa extends AppCompatActivity {
                                                                     tv1.setText("Transaksi Berhasil");
                                                                     tv2.setText(formattedDate);
                                                                     tv3.setText("");
-                                                                    tv4.setText("Jenis Transaksi: Isi Ulang Pulsa");
-                                                                    tv5.setText("Nominal : Rp. "+_nominal);
-                                                                    tv6.setText("Biaya Admin: Rp. 1500");
-                                                                    tv7.setText("Total Bayar: Rp. "+(_nominal+=1500));
+                                                                    tv4.setText("Jenis Transaksi: Pembayaran Kartu Kredit");
+                                                                    tv5.setText("Bank: "+ bank);
+                                                                    tv6.setText("Total Bayar: "+totalbyr);
+                                                                    tv7.setText("Deskripsi: "+desc);
                                                                     tv8.setText("No. Referensi: "+random);
 
 
@@ -266,7 +225,7 @@ public class beliPulsa extends AppCompatActivity {
                                                                         @Override
                                                                         public void onClick(DialogInterface dialog, int which) {
                                                                             dialog.cancel();
-                                                                            Intent iMain = new Intent(beliPulsa.this,mainMenu.class);
+                                                                            Intent iMain = new Intent(bayarcc.this,mainMenu.class);
                                                                             startActivity(iMain);
                                                                         }
                                                                     });
@@ -277,7 +236,7 @@ public class beliPulsa extends AppCompatActivity {
                                                                 SharedPreferences.Editor editor = appData.edit();
                                                                 editor.putInt("pinCounter",pinCounter);
                                                                 editor.commit();
-                                                                AlertDialog.Builder myBuilder = new AlertDialog.Builder(beliPulsa.this);
+                                                                AlertDialog.Builder myBuilder = new AlertDialog.Builder(bayarcc.this);
                                                                 myBuilder.setMessage("m-PIN yang Anda masukan Salah!");
                                                                 myBuilder.setCancelable(false);
                                                                 myBuilder.setNegativeButton("OK", null);
@@ -299,7 +258,7 @@ public class beliPulsa extends AppCompatActivity {
 
                                     builder.show();
                                 }else {
-                                    AlertDialog.Builder myBuilder = new AlertDialog.Builder(beliPulsa.this);
+                                    AlertDialog.Builder myBuilder = new AlertDialog.Builder(bayarcc.this);
                                     myBuilder.setMessage("m-Banking Anda di Blokir\nHubungi Kantor Cabang Terdekat");
                                     myBuilder.setCancelable(false);
                                     myBuilder.setNegativeButton("OK", null);
@@ -309,18 +268,18 @@ public class beliPulsa extends AppCompatActivity {
                         });
                         builder.setNegativeButton("Cancel",null);
                         builder.show();
-
+                        etJumlah.setEnabled(true);
                     }
+
                 }catch (Exception e){
-                    AlertDialog.Builder errorBuilder = new AlertDialog.Builder(beliPulsa.this);
+
+                    AlertDialog.Builder errorBuilder = new AlertDialog.Builder(bayarcc.this);
                     errorBuilder.setMessage("Tolong isi semua input");
                     errorBuilder.setCancelable(false);
                     errorBuilder.setNegativeButton("OK", null);
                     errorBuilder.show();
                 }
-
             }
-
         });
     }
 }

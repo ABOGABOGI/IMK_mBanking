@@ -28,5 +28,12 @@ public class mPayment extends AppCompatActivity {
                 startActivity(iPulsa);
             }
         });
+        bCc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent icc = new Intent(mPayment.this,bayarcc.class);
+                startActivity(icc);
+            }
+        });
     }
 }
