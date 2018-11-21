@@ -16,7 +16,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Commerce"
+            android:text="e-Commerce"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="36sp"
@@ -63,42 +63,40 @@
             app:layout_constraintTop_toBottomOf="@+id/VocIsiUlang" />
 
         <Button
-            android:id="@+id/PLNMan"
+            android:id="@+id/bGopay"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="0dp"
+            android:background="#FFFFFF"
             android:drawableEnd="@drawable/image"
             android:fitsSystemWindows="true"
-            android:text="PLN Manual Advice"
+            android:text="Top-up Gopay"
             android:textAlignment="viewStart"
             android:textSize="18sp"
-            android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PLNPra" />
 
         <Button
-            android:id="@+id/InboxCmm"
+            android:id="@+id/bMtix"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="0dp"
+            android:background="#FFFFFF"
             android:drawableEnd="@drawable/image"
             android:fitsSystemWindows="true"
-            android:text="Inbox"
+            android:text="Top-Up M-Tix XXI"
             android:textAlignment="viewStart"
             android:textSize="18sp"
-            android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/PLNMan" />
+            app:layout_constraintTop_toBottomOf="@+id/bGopay" />
 
     </android.support.constraint.ConstraintLayout>
 

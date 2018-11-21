@@ -7,13 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 public class mCommerce extends AppCompatActivity {
-    Button bPulsa,bPlnPra;
+    Button bPulsa,bPlnPra,bGopay,bMtix;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_m_commerce);
         bPulsa = findViewById(R.id.VocIsiUlang);
         bPlnPra = findViewById(R.id.PLNPra);
+        bGopay = findViewById(R.id.bGopay);
+        bMtix=findViewById(R.id.bMtix);
         bPulsa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,6 +28,20 @@ public class mCommerce extends AppCompatActivity {
             public void onClick(View v) {
                 Intent iPra = new Intent(mCommerce.this,plnprabayar.class);
                 startActivity(iPra);
+            }
+        });
+        bGopay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent igopay = new Intent(mCommerce.this,gopay.class);
+                startActivity(igopay);
+            }
+        });
+        bMtix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mCommerce.this,mtix.class);
+                startActivity(i);
             }
         });
     }

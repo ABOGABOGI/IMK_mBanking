@@ -29,5 +29,12 @@ public class mPayment extends AppCompatActivity {
                 startActivity(icc);
             }
         });
+        bTelepon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(mPayment.this,tlpn.class);
+                startActivity(i);
+            }
+        });
     }
 }
