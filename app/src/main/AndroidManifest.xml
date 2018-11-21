@@ -25,7 +25,8 @@
         <activity android:name=".mTransfer" />
         <activity android:name=".beliPulsa" />
         <activity android:name=".bayarcc" />
-        <activity android:name=".mCommerce"></activity>
+        <activity android:name=".mCommerce" />
+        <activity android:name=".plnprabayar"></activity>
     </application>
 
 </manifest>

@@ -251,7 +251,7 @@ public class beliPulsa extends AppCompatActivity {
                                                                     final TextView tv8 = resiView.findViewById(R.id.tv8);
                                                                     resiBuilder.setView(resiView);
                                                                     resiBuilder.setCancelable(false);
-                                                                    tvJudul.setText("Bukti Transfer");
+                                                                    tvJudul.setText("Bukti Transaksi");
                                                                     tv1.setText("Transaksi Berhasil");
                                                                     tv2.setText(formattedDate);
                                                                     tv3.setText("");
