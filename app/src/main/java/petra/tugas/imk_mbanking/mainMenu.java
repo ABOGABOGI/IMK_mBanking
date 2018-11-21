@@ -73,6 +73,10 @@ public class mainMenu extends AppCompatActivity {
                 Intent itransfer = new Intent(this,mTransfer.class);
                 startActivity(itransfer);
                 break;
+            case R.id.mEcomm:
+                Intent iComm = new Intent(this,mCommerce.class);
+                startActivity(iComm);
+                break;
         }
 
     }

@@ -21,13 +21,7 @@ public class mPayment extends AppCompatActivity {
         bHp = findViewById(R.id.bHandPhone);
         bAsuransi = findViewById(R.id.bAsuransi);
 
-        bHp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent iPulsa = new Intent(mPayment.this,beliPulsa.class);
-                startActivity(iPulsa);
-            }
-        });
+
         bCc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
