@@ -36,5 +36,12 @@ public class mPayment extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        bHp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mPayment.this,hpprabayar.class);
+                startActivity(i);
+            }
+        });
     }
 }
