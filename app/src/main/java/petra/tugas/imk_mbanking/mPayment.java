@@ -43,5 +43,12 @@ public class mPayment extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        bVacc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mPayment.this,vacc.class);
+                startActivity(i);
+            }
+        });
     }
 }

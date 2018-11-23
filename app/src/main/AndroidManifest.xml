@@ -30,7 +30,8 @@
         <activity android:name=".gopay" />
         <activity android:name=".mtix" />
         <activity android:name=".tlpn" />
-        <activity android:name=".hpprabayar"></activity>
+        <activity android:name=".hpprabayar" />
+        <activity android:name=".vacc"></activity>
     </application>
 
 </manifest>
