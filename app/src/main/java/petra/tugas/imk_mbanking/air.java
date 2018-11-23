@@ -19,9 +19,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-public class tlpn extends AppCompatActivity {
-    Button bOk;
-    EditText kode,nomor;
+public class air extends AppCompatActivity {
+    Button bOk,bWilayah;
+    EditText etNomor;
     int pinCounter;
     int bayar;
     SharedPreferences appData;
@@ -29,32 +29,35 @@ public class tlpn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tlpn);
+        setContentView(R.layout.activity_air);
+        bOk = findViewById(R.id.bOk);
+        etNomor = findViewById(R.id.etNomor);
+        bWilayah= findViewById(R.id.bWilayah);
+
         appData = getSharedPreferences("appData",MODE_PRIVATE);
         pinCounter = appData.getInt("pinCounter",0);
-        bayar=0;
-        context = tlpn.this;
-        bOk = findViewById(R.id.bOk);
-        kode =findViewById(R.id.etKode);
-        nomor = findViewById(R.id.etNomor);
+        bayar=100000;
+        context = air.this;
 
         bOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(kode.getText().toString().isEmpty()||nomor.getText().toString().isEmpty()){
+                if(etNomor.getText().toString().isEmpty()||bWilayah.getText().toString().isEmpty()){
                     AlertDialog.Builder errorBuilder = new AlertDialog.Builder(context);
                     errorBuilder.setMessage("Tolong isi semua input");
                     errorBuilder.setCancelable(false);
                     errorBuilder.setNegativeButton("OK", null);
                     errorBuilder.show();
                 }else{
-                    bayar=100000;
                     final ProgressDialog progressDialog = new ProgressDialog(context,
                             R.style.Theme_AppCompat_Light_Dialog);
                     progressDialog.setIndeterminate(true);
                     progressDialog.setCancelable(false);
                     progressDialog.setMessage("Please Wait...");
                     progressDialog.show();
+
+                    // TODO: Implement your own authentication logic here.
+
                     new android.os.Handler().postDelayed(
                             new Runnable() {
                                 public void run() {
@@ -69,15 +72,13 @@ public class tlpn extends AppCompatActivity {
                     final TextView tv41 = konfirmasiView.findViewById(R.id.tv4);
                     final TextView tv51 = konfirmasiView.findViewById(R.id.tv5);
                     final TextView tv61 = konfirmasiView.findViewById(R.id.tv6);
-                    final TextView tv71 = konfirmasiView.findViewById(R.id.tv7);
                     tvJudul1.setText("KONFIRMASI");
-                    tv11.setText("Tagihan Telepon");
-                    tv21.setText("Kode Area: "+kode.getText().toString());
-                    tv31.setText("No. Telp: "+nomor.getText().toString());
-                    tv41.setText("Tunggakan: Apr,Mei,Jun");
-                    tv51.setText("Jumlah: Rp. "+bayar);
-                    tv61.setText("Biaya Admin: Rp. 1500");
-                    tv71.setText("Total Bayar: Rp."+(bayar+1500));
+                    tv11.setText("AIR PDAM-Mar'17");
+                    tv21.setText("Wilayah: "+bWilayah.getText().toString());
+                    tv31.setText("No. Pelanggan: "+etNomor.getText().toString());
+                    tv41.setText("Nominal: Rp. "+bayar);
+                    tv51.setText("Biaya Admin: Rp. 1500");
+                    tv61.setText("Total Bayar: Rp. "+(bayar+1500));
 
 
                     builder.setView(konfirmasiView);
@@ -147,11 +148,12 @@ public class tlpn extends AppCompatActivity {
                                                                 tv1.setText("Transaksi Berhasil");
                                                                 tv2.setText(formattedDate);
                                                                 tv3.setText("");
-                                                                tv4.setText("Jenis Transaksi: Pembayaran Tagihan Telepon");
-                                                                tv5.setText("No. Telp: "+nomor.getText().toString());
-                                                                tv6.setText("Tunggakan: Apr, Mei, Jun");
+                                                                tv4.setText("Jenis Transaksi: Pembayaran Air PDAM - Mar'17");
+                                                                tv5.setText("Wilayah: "+bWilayah.getText().toString());
+                                                                tv6.setText("No. Pelanggan: "+etNomor.getText().toString());
                                                                 tv7.setText("Total Bayar: "+(bayar+1500));
                                                                 tv8.setText("No. Referensi: "+random);
+
 
 
                                                                 resiBuilder.setPositiveButton("Kembali ke Menu Awal", new DialogInterface.OnClickListener() {
@@ -204,6 +206,54 @@ public class tlpn extends AppCompatActivity {
                                 }
                             }, 3000);
                 }
+            }
+        });
+        bWilayah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater li = LayoutInflater.from(context);
+                View bankView = li.inflate(R.layout.jenispulsa, null);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                final Button button1 = (Button) bankView.findViewById(R.id.bTsel);
+                final Button button2 = (Button) bankView.findViewById(R.id.bSmarfren);
+                final Button button3 = (Button) bankView.findViewById(R.id.bIndosat);
+                final Button button4 = (Button) bankView.findViewById(R.id.bXl);
+                builder.setView(bankView);
+                button1.setText("Kab. A");
+                button3.setText("Kota C");
+                button2.setText("Kota B");
+                button4.setText("Kab. D");
+                final AlertDialog dialog = builder.create();
+                button1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bWilayah.setText(button1.getText().toString());
+                        dialog.cancel();
+                    }
+                });
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bWilayah.setText(button2.getText().toString());
+                        dialog.cancel();
+                    }
+                });
+                button3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bWilayah.setText(button3.getText().toString());
+                        dialog.cancel();
+                    }
+                });
+                button4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bWilayah.setText(button4.getText().toString());
+                        dialog.cancel();
+                    }
+                });
+
+                dialog.show();
             }
         });
     }

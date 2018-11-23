@@ -19,7 +19,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-public class vacc extends AppCompatActivity {
+public class plnpascabayar extends AppCompatActivity {
     Button bOk;
     EditText etNomor;
     int pinCounter;
@@ -29,11 +29,11 @@ public class vacc extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vacc);
+        setContentView(R.layout.activity_plnpascabayar);
         appData = getSharedPreferences("appData",MODE_PRIVATE);
         pinCounter = appData.getInt("pinCounter",0);
         bayar=100000;
-        context = vacc.this;
+        context = plnpascabayar.this;
 
         bOk = findViewById(R.id.bOk);
         etNomor = findViewById(R.id.etNomor);
@@ -69,12 +69,12 @@ public class vacc extends AppCompatActivity {
                                     final TextView tv51 = konfirmasiView.findViewById(R.id.tv5);
                                     final TextView tv61 = konfirmasiView.findViewById(R.id.tv6);
                                     tvJudul1.setText("KONFIRMASI");
-                                    tv11.setText("Pembayaran Virtual Account");
-                                    tv31.setText("No. Virtual Account: "+etNomor.getText().toString());
+                                    tv11.setText("Pembayaran Tagihan Listrik");
+                                    tv31.setText("No. Meteran/ID Pelanggan: "+etNomor.getText().toString());
                                     tv41.setText("Tagihan: Rp. "+bayar);
                                     tv51.setText("Biaya Admin: Rp. 1500");
                                     tv61.setText("Total Bayar: Rp. "+(bayar+1500));
-                                    tv21.setText("Institusi: Shopee");
+                                    tv21.setText("April'18");
 
                                     builder.setView(konfirmasiView);
                                     builder.setCancelable(false);
@@ -143,11 +143,10 @@ public class vacc extends AppCompatActivity {
                                                                                 tv1.setText("Transaksi Berhasil");
                                                                                 tv2.setText(formattedDate);
                                                                                 tv3.setText("");
-                                                                                tv4.setText("Jenis Transaksi: Pembayaran Virtual Account");
-                                                                                tv6.setText("No. Virtual Account: "+etNomor.getText().toString());
-                                                                                tv7.setText("Total Bayar: "+(bayar+1500));
-                                                                                tv8.setText("No. Referensi: "+random);
-                                                                                tv5.setText("Institusi: SHOPEE");
+                                                                                tv4.setText("Jenis Transaksi: Pembayaran Listrik - April'18");
+                                                                                tv5.setText("No. Meteran/ID Pelanggan: "+etNomor.getText().toString());
+                                                                                tv6.setText("Total Bayar: "+(bayar+1500));
+                                                                                tv7.setText("No. Referensi: "+random);
 
 
                                                                                 resiBuilder.setPositiveButton("Kembali ke Menu Awal", new DialogInterface.OnClickListener() {

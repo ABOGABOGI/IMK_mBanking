@@ -138,7 +138,7 @@
             app:layout_constraintTop_toBottomOf="@+id/bCc" />
 
         <Button
-            android:id="@+id/bAsuransi"
+            android:id="@+id/bPln"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
             android:layout_marginTop="0dp"
             android:drawableEnd="@drawable/image"
             android:fitsSystemWindows="true"
-            android:text="Asuransi"
+            android:text="Tagihan Listrik"
             android:textAlignment="viewStart"
             android:textSize="18sp"
             android:background="#FFFFFF"

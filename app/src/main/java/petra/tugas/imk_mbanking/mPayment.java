@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class mPayment extends AppCompatActivity {
-    Button bTelepon, bVacc, bInternet, bCc, bAir, bHp, bAsuransi;
+    Button bTelepon, bVacc, bInternet, bCc, bAir, bHp, bPln;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +19,7 @@ public class mPayment extends AppCompatActivity {
         bCc = findViewById(R.id.bCc);
         bAir = findViewById(R.id.bAir);
         bHp = findViewById(R.id.bHandPhone);
-        bAsuransi = findViewById(R.id.bAsuransi);
+        bPln = findViewById(R.id.bPln);
 
 
         bCc.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +47,20 @@ public class mPayment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mPayment.this,vacc.class);
+                startActivity(i);
+            }
+        });
+        bAir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mPayment.this, air.class);
+                startActivity(i);
+            }
+        });
+        bPln.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mPayment.this,plnpascabayar.class);
                 startActivity(i);
             }
         });

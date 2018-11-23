@@ -137,11 +137,11 @@ public class hpprabayar extends AppCompatActivity {
                                                                 tv1.setText("Transaksi Berhasil");
                                                                 tv2.setText(formattedDate);
                                                                 tv3.setText("");
-                                                                tv5.setText("Jenis Transaksi: Pembayaran HP Pascabayar");
+                                                                tv4.setText("Jenis Transaksi: Pembayaran HP Pascabayar");
                                                                 tv6.setText("No. HP: "+etHp.getText().toString());
                                                                 tv7.setText("Total Bayar: "+(bayar+1500));
                                                                 tv8.setText("No. Referensi: "+random);
-                                                                tv4.setText("Provider: "+bProvider.getText().toString());
+                                                                tv5.setText("Provider: "+bProvider.getText().toString());
 
 
                                                                 resiBuilder.setPositiveButton("Kembali ke Menu Awal", new DialogInterface.OnClickListener() {

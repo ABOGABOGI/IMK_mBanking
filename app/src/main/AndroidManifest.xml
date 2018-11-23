@@ -31,7 +31,9 @@
         <activity android:name=".mtix" />
         <activity android:name=".tlpn" />
         <activity android:name=".hpprabayar" />
-        <activity android:name=".vacc"></activity>
+        <activity android:name=".vacc" />
+        <activity android:name=".air" />
+        <activity android:name=".plnpascabayar"></activity>
     </application>
 
 </manifest>
