@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".mainMenu">
 
     <android.support.constraint.ConstraintLayout
+        android:layout_weight=".7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight=".7"
-        android:background="@drawable/wu_background_1"
-        android:elevation="15dp">
+        android:background="@drawable/wu_background_1">
 
         <TextView
             android:id="@+id/textView"
@@ -47,12 +47,14 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     </android.support.constraint.ConstraintLayout>
 
     <ScrollView
+        android:layout_weight=".3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight=".3">
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,11 +74,12 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/login_rounded"
                     android:cropToPadding="true"
                     android:onClick="mainMenuClick"
                     android:padding="16dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/m_info" />
+                    android:src="@drawable/logo" />
 
                 <ImageButton
                     android:id="@+id/mTransfer"
@@ -85,9 +88,10 @@
                     android:onClick="mainMenuClick"
                     android:layout_marginHorizontal="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/login_rounded"
                     android:padding="16dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/transfer" />
+                    android:src="@drawable/logo" />
 
                 <ImageButton
                     android:id="@+id/mPayment"
@@ -99,8 +103,49 @@
                     android:background="@drawable/login_rounded"
                     android:padding="16dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/m_payment" />
+                    android:src="@drawable/logo" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:text="m-Info"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/background_light" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:text="Transfer"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/background_light" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:text="m-Payment"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/background_light" />
+
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
@@ -121,7 +166,7 @@
                     android:onClick="mainMenuClick"
                     android:padding="16dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/m_commerce" />
+                    android:src="@drawable/logo" />
 
                 <ImageButton
                     android:id="@+id/mLain"
@@ -133,7 +178,7 @@
                     android:background="@drawable/login_rounded"
                     android:padding="16dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/tarik_tunai" />
+                    android:src="@drawable/logo" />
 
                 <ImageButton
                     android:id="@+id/mSetting"
@@ -145,11 +190,49 @@
                     android:background="@drawable/login_rounded"
                     android:padding="16dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/m_admin" />
+                    android:src="@drawable/logo" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:text="m-Commerce"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/background_light" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:text="m-Gatau"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/background_light" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:text="Setting"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/background_light" />
+
+            </LinearLayout>
+
         </LinearLayout>
-
     </ScrollView>
-
-
 </LinearLayout>

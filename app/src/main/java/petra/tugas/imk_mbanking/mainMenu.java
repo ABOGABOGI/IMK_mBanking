@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,8 +25,15 @@ public class mainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        getSupportActionBar().setTitle("");
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logo_size_64);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle("MnH M-Banking");
         getSupportActionBar().setElevation(0);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#18305b")));
+
+
         tvNama = (TextView)findViewById(R.id.tvNama);
         appData = getSharedPreferences("appData",MODE_PRIVATE);
         String nama = appData.getString("nama",null);
