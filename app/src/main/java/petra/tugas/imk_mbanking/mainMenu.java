@@ -27,7 +27,7 @@ public class mainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.logo_size_64);
+        getSupportActionBar().setIcon(R.drawable.logo_size_32);
         //getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setTitle("MnH M-Banking");
         getSupportActionBar().setElevation(0);

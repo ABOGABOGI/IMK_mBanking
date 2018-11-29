@@ -21,12 +21,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="monospace"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/arlrdbd"
             android:text="Selamat datang"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:textSize="30sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,11 +38,11 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="monospace"
-            android:text=""
+            android:fontFamily="@font/arlrdbd"
+            android:text="Nama Nasabah"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,36 +68,52 @@
 
                 <ImageButton
                     android:id="@+id/mInfo"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginHorizontal="5dp"
+                    android:minWidth="100dp"
+                    android:adjustViewBounds="true"
+
                     android:layout_weight="1"
-                    android:cropToPadding="true"
+                    android:background="@android:color/transparent"
+                    android:layout_marginHorizontal="10dp"
+
                     android:onClick="mainMenuClick"
-                    android:padding="16dp"
+
                     android:scaleType="fitXY"
-                    android:src="@drawable/m_info" />
+                    android:src="@drawable/m_info"/>
 
                 <ImageButton
                     android:id="@+id/mTransfer"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="mainMenuClick"
-                    android:layout_marginHorizontal="5dp"
+                    android:minWidth="100dp"
+                    android:adjustViewBounds="true"
+
                     android:layout_weight="1"
-                    android:padding="16dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginHorizontal="10dp"
+
+                    android:onClick="mainMenuClick"
+
                     android:scaleType="fitXY"
                     android:src="@drawable/transfer" />
 
                 <ImageButton
                     android:id="@+id/mPayment"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="mainMenuClick"
-                    android:layout_marginHorizontal="5dp"
+                    android:minWidth="100dp"
+                    android:adjustViewBounds="true"
+
                     android:layout_weight="1"
-                    android:background="@drawable/login_rounded"
-                    android:padding="16dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginHorizontal="10dp"
+
+                    android:onClick="mainMenuClick"
+
                     android:scaleType="fitXY"
                     android:src="@drawable/m_payment" />
             </LinearLayout>
@@ -113,42 +129,56 @@
 
                 <ImageButton
                     android:id="@+id/mEcomm"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginHorizontal="5dp"
+                    android:minWidth="100dp"
+                    android:adjustViewBounds="true"
+
                     android:layout_weight="1"
-                    android:background="@drawable/login_rounded"
+                    android:background="@android:color/transparent"
+                    android:layout_marginHorizontal="10dp"
+
                     android:onClick="mainMenuClick"
-                    android:padding="16dp"
+
                     android:scaleType="fitXY"
                     android:src="@drawable/m_commerce" />
 
                 <ImageButton
                     android:id="@+id/mLain"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="mainMenuClick"
-                    android:layout_marginHorizontal="5dp"
+                    android:minWidth="100dp"
+                    android:adjustViewBounds="true"
+
                     android:layout_weight="1"
-                    android:background="@drawable/login_rounded"
-                    android:padding="16dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginHorizontal="10dp"
+
+                    android:onClick="mainMenuClick"
+
                     android:scaleType="fitXY"
                     android:src="@drawable/tarik_tunai" />
 
                 <ImageButton
                     android:id="@+id/mSetting"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="mainMenuClick"
-                    android:layout_marginHorizontal="5dp"
+                    android:minWidth="100dp"
+                    android:adjustViewBounds="true"
+
                     android:layout_weight="1"
-                    android:background="@drawable/login_rounded"
-                    android:padding="16dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginHorizontal="10dp"
+
+                    android:onClick="mainMenuClick"
+
                     android:scaleType="fitXY"
                     android:src="@drawable/m_admin" />
             </LinearLayout>
         </LinearLayout>
-
     </ScrollView>
 
 
