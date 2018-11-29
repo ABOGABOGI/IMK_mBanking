@@ -1,104 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mCommerce"
-    android:background="@drawable/bg_gradient">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_weight=".8"
+        android:background="@drawable/wu_background_1"
+        android:elevation="15dp">
+
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+
+            android:fontFamily="@font/arlrdbd"
             android:text="e-Commerce"
+
             android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="36sp"
+            android:textColor="@color/cWhite"
+            android:textSize="30sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/VocIsiUlang"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="64dp"
-            android:drawableEnd="@drawable/image"
-            android:fitsSystemWindows="true"
-            android:text="Voucher Isi Ulang"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-        <Button
-            android:id="@+id/PLNPra"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="#FFFFFF"
-            android:drawableEnd="@drawable/image"
-            android:fitsSystemWindows="true"
-            android:text="Token Listrik"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/VocIsiUlang" />
-
-        <Button
-            android:id="@+id/bGopay"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="#FFFFFF"
-            android:drawableEnd="@drawable/image"
-            android:fitsSystemWindows="true"
-            android:text="Top-up Gopay"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/PLNPra" />
-
-        <Button
-            android:id="@+id/bMtix"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="#FFFFFF"
-            android:drawableEnd="@drawable/image"
-            android:fitsSystemWindows="true"
-            android:text="Top-Up M-Tix XXI"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bGopay" />
-
     </android.support.constraint.ConstraintLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</ScrollView>
+            <Button
+                android:id="@+id/VocIsiUlang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+
+                android:background="@drawable/login"
+                android:text="Voucher Isi Ulang"
+
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/PLNPra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+
+                android:background="@drawable/login"
+                android:text="Token Listrik"
+
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/bGopay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+
+                android:background="@drawable/login"
+                android:text="Top-Up GO-Pay"
+
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/bMtix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+
+                android:background="@drawable/login"
+                android:text="Top-Up M-Tix XXI"
+
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
