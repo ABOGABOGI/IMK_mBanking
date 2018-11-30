@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:text="Inbox"
+                android:text="History"
                 android:textColor="#ffffff"
 
                 android:layout_marginVertical="10dp"
