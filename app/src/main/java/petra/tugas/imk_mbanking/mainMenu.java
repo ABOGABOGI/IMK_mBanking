@@ -86,6 +86,14 @@ public class mainMenu extends AppCompatActivity {
                 Intent iComm = new Intent(this,mCommerce.class);
                 startActivity(iComm);
                 break;
+
+            case R.id.mLain:
+                Intent i = new Intent(this,tariktunai.class);
+                startActivity(i);
+                break;
+            case R.id.mSetting:
+                Intent iSetting = new Intent(this,mAdmin.class);
+                startActivity(iSetting);
         }
 
     }

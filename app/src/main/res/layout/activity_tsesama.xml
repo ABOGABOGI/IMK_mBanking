@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".tsesama">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
 
             android:fontFamily="@font/arlrdbd"
-            android:text="Transfer Bank Sama"
+            android:text="Transfer Antar Rekening"
 
             android:textAlignment="center"
             android:textColor="@color/cWhite"
@@ -42,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
@@ -50,7 +51,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/cWhite"
-                android:text="No Rekening"
+                android:text="No.Rek Tujuan"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -65,7 +66,7 @@
                 android:layout_marginStart="8dp"
                 android:background="@color/cWhite"
                 android:inputType="number"
-                android:maxLength="4"
+                android:maxLength="12"
                 android:textAlignment="viewStart"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -96,10 +97,37 @@
                 android:textAlignment="viewStart"
                 android:textColor="@android:color/black"
                 android:inputType="number"
-                android:maxLength="7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/cWhite"
+                android:text="Pesan"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNominal" />
+
+            <EditText
+                android:id="@+id/etPesan"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/cWhite"
+                android:textAlignment="viewStart"
+                android:textColor="@android:color/black"
+                android:maxLength="30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 
             <android.support.v7.widget.AppCompatButton
@@ -116,7 +144,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etNomor" />
+                app:layout_constraintTop_toBottomOf="@+id/etPesan" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
