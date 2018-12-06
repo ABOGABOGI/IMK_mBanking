@@ -37,7 +37,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight=".2">
+        android:layout_weight=".2"
+        android:background="@color/cWhite">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,9 +53,9 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
                     android:background="@color/cWhite"
                     android:text="21/11"
                     android:textColor="@android:color/black"
@@ -72,7 +73,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:background="@color/cWhite"
-                    android:text="Rp.100,000,000.00"
+                    android:text="Rp.100,000,000"
                     android:textAlignment="textEnd"
                     android:textColor="@android:color/holo_red_dark"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -81,21 +82,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/cWhite"
-                android:text=" "
-                android:textColor="@android:color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -120,7 +106,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/cWhite"
-                android:text="-----------------------------------------------------"
+                android:text="--------------------------------------------------------------------------------------"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -155,7 +142,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:background="@color/cWhite"
-                    android:text="Rp.50,000,000.00"
+                    android:text="Rp.50,000,000"
                     android:textAlignment="textEnd"
                     android:textColor="@android:color/holo_red_dark"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -232,7 +219,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/cWhite"
-                android:text="-----------------------------------------------------"
+                android:text="--------------------------------------------------------------------------------------"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -267,7 +255,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:background="@color/cWhite"
-                    android:text="Rp.1,000,000,000.00"
+                    android:text="Rp.1,000,000,000"
                     android:textAlignment="textEnd"
                     android:textColor="@android:color/holo_green_dark"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -314,7 +302,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/cWhite"
-                android:text="-----------------------------------------------------"
+                android:text="--------------------------------------------------------------------------------------"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

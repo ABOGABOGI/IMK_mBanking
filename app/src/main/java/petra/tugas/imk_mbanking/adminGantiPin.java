@@ -2,6 +2,10 @@ package petra.tugas.imk_mbanking;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +21,13 @@ public class adminGantiPin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_ganti_pin);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logo_size_32);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle("MnH M-Banking");
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#18305b")));
 
         pinnow = findViewById(R.id.etPinNow);
         newpin1 = findViewById(R.id.etPinNew);
@@ -52,25 +63,51 @@ public class adminGantiPin extends AppCompatActivity {
                                     errorBuilder.setCancelable(false);
                                     errorBuilder.setNegativeButton("OK", null);
                                     errorBuilder.show();
+                                    pinnow.setText("");
+                                    newpin1.setText("");
+                                    newpin2.setText("");
                                 }else if(newpin1.getText().toString().length()!=6){
                                     AlertDialog.Builder errorBuilder = new AlertDialog.Builder(context);
                                     errorBuilder.setMessage("Pin Harus 6 digit angka");
                                     errorBuilder.setCancelable(false);
                                     errorBuilder.setNegativeButton("OK", null);
                                     errorBuilder.show();
+                                    pinnow.setText("");
+                                    newpin1.setText("");
+                                    newpin2.setText("");
                                 }
-                                else if (!newpin1.getText().toString().equals(newpin2.getText().toString().isEmpty())) {
+                                else if (!newpin1.getText().toString().equals(newpin2.getText().toString())) {
                                     AlertDialog.Builder errorBuilder = new AlertDialog.Builder(context);
                                     errorBuilder.setMessage("Pin baru tidak sama");
                                     errorBuilder.setCancelable(false);
                                     errorBuilder.setNegativeButton("OK", null);
                                     errorBuilder.show();
-                                } else {
+                                    pinnow.setText("");
+                                    newpin1.setText("");
+                                    newpin2.setText("");
+                                }
+                                else if (newpin1.getText().toString().equals("123456")) {
                                     AlertDialog.Builder errorBuilder = new AlertDialog.Builder(context);
-                                    errorBuilder.setMessage("Pin Anda Telah Berhasil DIganti");
+                                    errorBuilder.setMessage("Pin baru tidak boleh sama dengan Pin lama");
                                     errorBuilder.setCancelable(false);
                                     errorBuilder.setNegativeButton("OK", null);
                                     errorBuilder.show();
+                                    pinnow.setText("");
+                                    newpin1.setText("");
+                                    newpin2.setText("");
+                                }else {
+                                    AlertDialog.Builder errorBuilder = new AlertDialog.Builder(context);
+                                    errorBuilder.setMessage("Pin Anda Telah Berhasil DIganti");
+                                    errorBuilder.setCancelable(false);
+                                    errorBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent(adminGantiPin.this,mAdmin.class);
+                                            startActivity(intent);
+                                        }
+                                    });
+                                    errorBuilder.show();
+
                                 }
                             }
                         },3000);

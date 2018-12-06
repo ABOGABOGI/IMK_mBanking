@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +30,14 @@ public class bayarcc extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bayarcc);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logo_size_32);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle("MnH M-Banking");
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#18305b")));
+
         bOk = findViewById(R.id.bOk);
         bBank = findViewById(R.id.bBank);
         etJumlah = findViewById(R.id.etJumlah);

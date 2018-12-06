@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +31,15 @@ public class tariktunai extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tariktunai);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logo_size_32);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle("MnH M-Banking");
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#18305b")));
+
+
         context = tariktunai.this;
         appData = getSharedPreferences("appData",MODE_PRIVATE);
         pinCounter = appData.getInt("pinCounter",0);
@@ -45,6 +56,10 @@ public class tariktunai extends AppCompatActivity {
                 final Button button2 = (Button) jenisView.findViewById(R.id.b50);
                 final Button button3 = (Button) jenisView.findViewById(R.id.b100);
                 final Button button4 = (Button) jenisView.findViewById(R.id.b200);
+                button1.setText("50.000");
+                button2.setText("100.000");
+                button3.setText("150.000");
+                button4.setText("200.000");
                 builder.setView(jenisView);
                 final AlertDialog dialog = builder.create();
                 button1.setOnClickListener(new View.OnClickListener() {
@@ -131,77 +146,49 @@ public class tariktunai extends AppCompatActivity {
                                                         editor.putInt("saldo", newSaldo);
                                                         editor.commit();
 
-                                                        LayoutInflater li = LayoutInflater.from(context);
-                                                        View pinView = li.inflate(R.layout.pin, null);
-                                                        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                                                        final EditText etPin = (EditText) pinView.findViewById(R.id.etPin);
-                                                        builder.setView(pinView);
-                                                        builder.setCancelable(false);
-                                                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                        LayoutInflater liResi = LayoutInflater.from(context);
+                                                        View resiView = liResi.inflate(R.layout.layoutkonfirmasi, null);
+                                                        AlertDialog.Builder resiBuilder = new AlertDialog.Builder(context);
+                                                        final TextView tvJudul = resiView.findViewById(R.id.tvJudul);
+                                                        final TextView tv1 = resiView.findViewById(R.id.tv1);
+                                                        final TextView tv2 = resiView.findViewById(R.id.tv2);
+                                                        final TextView tv3 = resiView.findViewById(R.id.tv3);
+                                                        final TextView tv4 = resiView.findViewById(R.id.tv4);
+                                                        final TextView tv5 = resiView.findViewById(R.id.tv5);
+                                                        final TextView tv6 = resiView.findViewById(R.id.tv6);
+                                                        final TextView tv7 = resiView.findViewById(R.id.tv7);
+                                                        final TextView tv8 = resiView.findViewById(R.id.tv8);
+                                                        resiBuilder.setView(resiView);
+                                                        resiBuilder.setCancelable(false);
+                                                        tvJudul.setText("Bukti Transaksi");
+                                                        tv1.setText("Transaksi Berhasil");
+                                                        tv2.setText(formattedDate);
+                                                        tv3.setText("");
+                                                        tv4.setText("Jenis Transaksi : Tarik Tunai");
+                                                        tv5.setText("Jumlah : " + bayar);
+                                                        tv6.setText("Kode Tarik Tunai : 290876");
+                                                        resiBuilder.setNegativeButton("Kembali ke Menu Awal", new DialogInterface.OnClickListener() {
                                                             @Override
                                                             public void onClick(DialogInterface dialog, int which) {
-                                                                final ProgressDialog progressDialog = new ProgressDialog(context,
-                                                                        R.style.Theme_AppCompat_Light_Dialog);
-                                                                progressDialog.setIndeterminate(true);
-                                                                progressDialog.setCancelable(false);
-                                                                progressDialog.setMessage("Please Wait...");
-                                                                progressDialog.show();
-
-                                                                // TODO: Implement your own authentication logic here.
-
-                                                                new android.os.Handler().postDelayed(
-                                                                        new Runnable() {
-                                                                            public void run() {
-                                                                                progressDialog.dismiss();
-                                                                                String mpin = etPin.getText().toString();
-                                                                                if (mpin.equals("123456")) {
-                                                                                    LayoutInflater liResi = LayoutInflater.from(context);
-                                                                                    View resiView = liResi.inflate(R.layout.layoutkonfirmasi, null);
-                                                                                    AlertDialog.Builder resiBuilder = new AlertDialog.Builder(context);
-                                                                                    final TextView tvJudul = resiView.findViewById(R.id.tvJudul);
-                                                                                    final TextView tv1 = resiView.findViewById(R.id.tv1);
-                                                                                    final TextView tv2 = resiView.findViewById(R.id.tv2);
-                                                                                    final TextView tv3 = resiView.findViewById(R.id.tv3);
-                                                                                    final TextView tv4 = resiView.findViewById(R.id.tv4);
-                                                                                    final TextView tv5 = resiView.findViewById(R.id.tv5);
-                                                                                    final TextView tv6 = resiView.findViewById(R.id.tv6);
-                                                                                    final TextView tv7 = resiView.findViewById(R.id.tv7);
-                                                                                    final TextView tv8 = resiView.findViewById(R.id.tv8);
-                                                                                    resiBuilder.setView(resiView);
-                                                                                    resiBuilder.setCancelable(false);
-                                                                                    tvJudul.setText("Bukti Transaksi");
-                                                                                    tv1.setText("Transaksi Berhasil");
-                                                                                    tv2.setText(formattedDate);
-                                                                                    tv3.setText("");
-                                                                                    tv4.setText("Jenis Transaksi : Tarik Tunai");
-                                                                                    tv5.setText("Jumlah : " + bayar);
-                                                                                    tv6.setText("Kode Tarik Tunai : 290876");
-                                                                                    resiBuilder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                                                                                        @Override
-                                                                                        public void onClick(DialogInterface dialog, int which) {
-                                                                                            dialog.cancel();
-                                                                                        }
-                                                                                    });
-                                                                                    resiBuilder.show();
-                                                                                }
-                                                                            }
-                                                                        }, 3000);
-                                                            }
+                                                                Intent i = new Intent(tariktunai.this,mainMenu.class);
+                                                                startActivity(i);
+                                                                }
                                                         });
+                                                        resiBuilder.show();
                                                     }
 
                                                 }else {
-                                                            pinCounter+=1;
-                                                            SharedPreferences.Editor editor = appData.edit();
-                                                            editor.putInt("pinCounter",pinCounter);
-                                                            editor.commit();
-                                                            AlertDialog.Builder myBuilder = new AlertDialog.Builder(context);
-                                                            myBuilder.setMessage("m-PIN yang Anda masukan Salah!");
-                                                            myBuilder.setCancelable(false);
-                                                            myBuilder.setNegativeButton("OK", null);
-                                                            myBuilder.show();
+                                                    pinCounter+=1;
+                                                    SharedPreferences.Editor editor = appData.edit();
+                                                    editor.putInt("pinCounter",pinCounter);
+                                                    editor.commit();
+                                                    AlertDialog.Builder myBuilder = new AlertDialog.Builder(context);
+                                                    myBuilder.setMessage("m-PIN yang Anda masukan Salah!");
+                                                    myBuilder.setCancelable(false);
+                                                    myBuilder.setNegativeButton("OK", null);
+                                                    myBuilder.show();
+                                                }
 
-                                                        }
                                                     }
                                                 }, 3000);
 

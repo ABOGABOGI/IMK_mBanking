@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,14 @@ public class mAdmin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_m_admin);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logo_size_32);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle("MnH M-Banking");
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#18305b")));
+
         gantipin = findViewById( R.id.tGantiPin );
         blokirkartu = findViewById( R.id.tBlokirKartu );
         appData = getSharedPreferences("appData",MODE_PRIVATE);
@@ -68,7 +78,13 @@ public class mAdmin extends AppCompatActivity {
                                                                 AlertDialog.Builder errorBuilder = new AlertDialog.Builder(mAdmin.this);
                                                                 errorBuilder.setMessage("Kartu ATM Anda telah berhasil di blokir");
                                                                 errorBuilder.setCancelable(false);
-                                                                errorBuilder.setNegativeButton("OK", null);
+                                                                errorBuilder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                                                    @Override
+                                                                    public void onClick(DialogInterface dialog, int which) {
+                                                                        Intent i = new Intent(mAdmin.this,mainMenu.class);
+                                                                        startActivity(i);
+                                                                    }
+                                                                });
                                                                 errorBuilder.show();
                                                             }else{
                                                                 pinCounter+=1;

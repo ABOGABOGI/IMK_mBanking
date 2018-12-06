@@ -3,36 +3,44 @@
     android:layout_width="fill_parent"
     android:layout_height="400dp"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Info Saldo : "
         android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvDateCek"
+        android:textColor="@android:color/black"
         android:text="tgl disini"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         android:text="No. Rekening: "/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         android:id="@+id/tvNorek"
         android:text="123456789"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         android:text="Saldo: "/>
 
     <TextView
         android:id="@+id/tvSaldo"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:textColor="@android:color/black"
         android:text="Rp. xxxx" />
     <requestFocus/>
 

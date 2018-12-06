@@ -68,8 +68,7 @@
                 android:text="Handphone"
 
                 android:textColor="#ffffff" />
-
-            <Button
+            <!--<Button
                 android:id="@+id/bInternet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,7 +79,7 @@
                 android:background="@drawable/login"
                 android:text="Internet"
 
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff" />-->
 
             <Button
                 android:id="@+id/bVacc"
